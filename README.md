@@ -2,7 +2,7 @@
 
 Tautan Nova Ardhana, creative technologist di Jakarta: empat studi kasus web interaktif, lab eksperimen, tarif, dan slot kolaborasi.
 
-**Demo live:** https://linkinbio-nova.vercel.app
+**Demo live:** https://linkinbio-nova.pintuweb.id
 
 ![Tangkapan layar Nova Ardhana](public/og.jpg)
 

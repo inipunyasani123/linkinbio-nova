@@ -4,10 +4,10 @@ import "./globals.css";
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["400", "600", "700"] });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-const __jsonld = {"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"Nova Ardhana","jobTitle":"Creative Technologist","url":"https://linkinbio-nova.vercel.app","inLanguage":"id"}};
+const __jsonld = {"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"Nova Ardhana","jobTitle":"Creative Technologist","url":"https://linkinbio-nova.pintuweb.id","inLanguage":"id"}};
 
 export const metadata = {
-  metadataBase: new URL("https://linkinbio-nova.vercel.app"),
+  metadataBase: new URL("https://linkinbio-nova.pintuweb.id"),
   title: { default: "Nova Ardhana — Creative Technologist", template: "%s — Nova Ardhana" },
   description: "Tautan Nova Ardhana, creative technologist di Jakarta: empat studi kasus web interaktif, lab eksperimen, tarif, dan slot kolaborasi.",
   applicationName: "Nova Ardhana",
@@ -15,11 +15,11 @@ export const metadata = {
   authors: [{ name: "Nova Ardhana" }],
   creator: "Nova Ardhana",
   publisher: "Nova Ardhana",
-  alternates: { canonical: "https://linkinbio-nova.vercel.app" },
+  alternates: { canonical: "https://linkinbio-nova.pintuweb.id" },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://linkinbio-nova.vercel.app",
+    url: "https://linkinbio-nova.pintuweb.id",
     siteName: "Nova Ardhana",
     title: "Nova Ardhana — Creative Technologist",
     description: "Tautan Nova Ardhana, creative technologist di Jakarta: empat studi kasus web interaktif, lab eksperimen, tarif, dan slot kolaborasi.",
