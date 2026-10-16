@@ -1,6 +1,8 @@
-import { LAYANAN, SITE, SLOT, rp } from '@/lib/nova';
+import { LAYANAN, SITE, rp } from '@/lib/nova';
+import { hariIniWIB } from '@/lib/waktu';
 import Kembali from '../components/Kembali';
 import FormKolaborasi from '../components/FormKolaborasi';
+import SlotKosong from '../components/SlotKosong';
 
 export const metadata = {
   title: 'Kolaborasi & Tarif',
@@ -11,6 +13,7 @@ export const metadata = {
 const LANGKAH = ['Ngobrol 20 menit', 'Proposal satu halaman', 'Prototipe minggu pertama', 'Bangun & uji di ponsel sungguhan'];
 
 export default function Kolaborasi() {
+  const hari = hariIniWIB();
   return (
     <main className="relative min-h-screen px-4 py-10 sm:py-14">
       <div className="aurora" aria-hidden="true" />
@@ -23,30 +26,23 @@ export default function Kolaborasi() {
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-3">
           {LAYANAN.map((l) => (
-            <li key={l.nama} className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur">
+            <li key={l.nama} className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur sm:p-6">
               <h2 className="font-semibold text-white">{l.nama}</h2>
-              <p className="mt-3 font-display text-xl font-semibold text-white">mulai {rp(l.mulai)}</p>
+              <p className="mt-2 font-display text-xl font-semibold text-white sm:mt-3">mulai {rp(l.mulai)}</p>
               <p className="text-xs text-white/65">{l.waktu}</p>
-              <p className="mt-3 text-sm leading-relaxed text-white/80">{l.isi}</p>
+              <p className="mt-2 text-sm leading-relaxed text-white/80 sm:mt-3">{l.isi}</p>
             </li>
           ))}
         </ul>
 
         <section aria-labelledby="slot" className="mt-12">
           <h2 id="slot" className="text-2xl font-bold text-white">Slot kosong</h2>
-          <ul className="mt-5 grid gap-3 sm:grid-cols-3">
-            {SLOT.map(([b, n]) => (
-              <li key={b} className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4">
-                <span className="text-white/85">{b}</span>
-                <span className={`rounded-full px-3 py-1 text-xs font-semibold ${n ? 'bg-teal-300/15 text-teal-200' : 'bg-white/10 text-white/70'}`}>{n ? `${n} slot` : 'penuh'}</span>
-              </li>
-            ))}
-          </ul>
+          <SlotKosong hari={hari} />
         </section>
 
         <section aria-labelledby="cara" className="mt-12">
           <h2 id="cara" className="text-2xl font-bold text-white">Cara kerja</h2>
-          <ol className="mt-5 grid gap-3 sm:grid-cols-4">
+          <ol className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {LANGKAH.map((s, i) => (
               <li key={s} className="rounded-2xl border border-white/10 p-4">
                 <span className="font-display text-sm text-teal-200">0{i + 1}</span>
@@ -56,7 +52,7 @@ export default function Kolaborasi() {
           </ol>
         </section>
 
-        <FormKolaborasi />
+        <FormKolaborasi hari={hari} />
         <p className="mt-8 text-center text-[11px] text-white/60">Tarif dan slot adalah contoh purwarupa desain.</p>
       </div>
     </main>

@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { LAYANAN } from '@/lib/nova';
+import { LAYANAN, slotBulan } from '@/lib/nova';
+import useHariIni from './useHariIni';
 
-export default function FormKolaborasi() {
+export default function FormKolaborasi({ hari: awal }) {
+  const hari = useHariIni(awal);
+  const bulan = slotBulan(hari).filter((s) => s.sisa);
   const [selesai, setSelesai] = useState(false);
-  const input = 'w-full rounded-xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:border-teal-300 focus:outline-none';
+  const input = 'w-full rounded-xl border border-white/40 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:border-teal-300';
 
   return (
     <section id="form" aria-labelledby="form-h" className="mt-12 scroll-mt-8 rounded-3xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur sm:p-8">
@@ -14,7 +17,7 @@ export default function FormKolaborasi() {
         <div role="status" className="mt-5">
           <p className="text-lg font-semibold text-white">Terima kasih — tercatat.</p>
           <p className="mt-2 text-white/75">Ini purwarupa desain: tidak ada pesan yang benar-benar dikirim.</p>
-          <button type="button" onClick={() => setSelesai(false)} className="mt-5 rounded-full border border-white/20 px-4 py-2 text-sm text-white hover:border-teal-300">Isi ulang</button>
+          <button type="button" onClick={() => setSelesai(false)} className="mt-5 min-h-11 rounded-full border border-white/20 px-5 py-2 text-sm text-white hover:border-teal-300">Isi ulang</button>
         </div>
       ) : (
         <form onSubmit={(e) => { e.preventDefault(); setSelesai(true); }} className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -36,9 +39,8 @@ export default function FormKolaborasi() {
           <div>
             <label htmlFor="f-mulai" className="mb-1.5 block text-sm text-white/80">Ingin mulai</label>
             <select id="f-mulai" className={input}>
-              <option>November 2026</option>
-              <option>Desember 2026</option>
-              <option>Tahun depan</option>
+              {bulan.map((b) => <option key={b.label}>{b.label}</option>)}
+              <option>Lebih lambat</option>
             </select>
           </div>
           <div className="sm:col-span-2">

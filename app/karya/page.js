@@ -4,7 +4,7 @@ import Kembali from '../components/Kembali';
 
 export const metadata = {
   title: 'Studi Kasus',
-  description: 'Empat studi kasus Nova Ardhana: peta genangan waktu nyata, katalog batik 3D, dasbor kehadiran kelas, dan pameran suara kota — masalah, pendekatan, dan hasilnya.',
+  description: 'Empat studi kasus Nova Ardhana: peta genangan waktu nyata, katalog batik 3D, dasbor absensi kelas, dan pameran suara kota, dari masalah sampai hasil.',
   alternates: { canonical: `${SITE}/karya` },
 };
 
@@ -36,7 +36,7 @@ export default function Karya() {
                 {k.hasil.map(([t, v]) => (
                   <div key={t} className="flex flex-col-reverse rounded-2xl border border-white/10 bg-black/20 p-4">
                     <dt className="mt-1 text-xs text-white/65">{t}</dt>
-                    <dd className="font-display text-2xl font-semibold text-white">{v}</dd>
+                    <dd className="font-display text-lg font-semibold text-white sm:text-2xl">{v}</dd>
                   </div>
                 ))}
               </dl>
@@ -62,7 +62,7 @@ export default function Karya() {
 
         <div className="mt-16 flex flex-col items-start gap-4 rounded-3xl border border-white/10 bg-white/[0.06] p-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-white/85">Punya kebiasaan yang ingin diubah lewat web?</p>
-          <Link href="/kolaborasi" className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#07070f] hover:bg-teal-200">Lihat cara kolaborasi</Link>
+          <Link href="/kolaborasi" className="inline-flex min-h-11 items-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#07070f] hover:bg-teal-200">Lihat cara kolaborasi</Link>
         </div>
         <p className="mt-8 text-center text-[11px] text-white/60">Klien dan angka adalah contoh purwarupa desain.</p>
       </div>
