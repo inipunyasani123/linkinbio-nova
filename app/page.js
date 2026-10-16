@@ -1,3 +1,4 @@
+import Gambar from './components/Gambar';
 import Link from 'next/link';
 import { ArrowUpRight, MapPin, Sparkles } from 'lucide-react';
 import { KARYA, LINKS, PROFIL } from '@/lib/nova';
@@ -17,10 +18,10 @@ export default function Home() {
       <div className="w-full max-w-md lg:grid lg:max-w-5xl lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-5">
         {/* Profil — di layar lebar menjadi ubin kaca tersendiri */}
         <section aria-labelledby="nama" className="lg:flex lg:flex-col lg:justify-center lg:rounded-[2rem] lg:border lg:border-white/10 lg:bg-white/[0.04] lg:p-8 lg:backdrop-blur">
-          {/* Avatar monogram dengan cincin conic — persona fiktif, tanpa foto */}
-          <div className="rise mx-auto h-28 w-28 rounded-full p-[3px] ring-conic lg:h-32 lg:w-32" aria-hidden="true">
-            <div className="grid h-full w-full place-items-center rounded-full border-4 border-[#07070f] bg-[#0d0d1a]">
-              <span className="text-gradient font-display text-4xl font-bold lg:text-5xl">{PROFIL.inisial}</span>
+          {/* Potret ilustrasi (persona fiktif, bukan foto orang sungguhan) dalam cincin conic */}
+          <div className="rise mx-auto h-28 w-28 rounded-full p-[3px] ring-conic lg:h-32 lg:w-32">
+            <div className="h-full w-full overflow-hidden rounded-full border-4 border-[#07070f] bg-[#0d0d1a]">
+              <Gambar src="/images/nova-ardhana.webp" alt={`Potret ilustrasi ${PROFIL.nama}`} width={128} height={128} loading="eager" className="h-full w-full object-cover" />
             </div>
           </div>
 
@@ -63,6 +64,14 @@ export default function Home() {
               <span className="flex-1 lg:flex-none">
                 <span className="block font-display font-semibold text-white lg:text-2xl">{l.label}</span>
                 <span className="block text-xs text-white/70 lg:mt-1 lg:text-sm">{l.desc}</span>
+                {/* Ubin studi kasus di layar lebar: deret mini sampul keempat proyek */}
+                {i === 0 && (
+                  <span className="mt-4 hidden grid-cols-4 gap-2 lg:grid" aria-hidden="true">
+                    {KARYA.map((k) => (
+                      <Gambar key={k.slug} src={k.gambar} alt="" width={1280} height={720} asli={1280} sizes="150px" className="aspect-video w-full rounded-lg border border-white/10 object-cover opacity-90 transition group-hover:opacity-100" />
+                    ))}
+                  </span>
+                )}
               </span>
               <ArrowUpRight size={18} className="shrink-0 text-white/50 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white lg:hidden" aria-hidden="true" />
             </Link>

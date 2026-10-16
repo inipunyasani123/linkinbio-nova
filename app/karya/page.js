@@ -1,3 +1,4 @@
+import Gambar from '../components/Gambar';
 import Link from 'next/link';
 import { KARYA, LAB, SITE } from '@/lib/nova';
 import Kembali from '../components/Kembali';
@@ -22,7 +23,10 @@ export default function Karya() {
         <ol className="mt-10 space-y-6">
           {KARYA.map((k, i) => (
             <li key={k.slug} id={k.slug} className="rise scroll-mt-8 rounded-3xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur sm:p-8" style={{ animationDelay: `${0.12 + i * 0.06}s` }}>
-              <p className="flex flex-wrap items-baseline justify-between gap-2 text-xs uppercase tracking-[0.18em] text-white/65">
+              <div className="-mx-2 -mt-2 overflow-hidden rounded-2xl border border-white/10 bg-[#0b0a17] sm:-mx-3 sm:-mt-3">
+                <Gambar src={k.gambar} alt={k.alt} width={1280} height={720} asli={1280} priority={i === 0} sizes="(min-width: 800px) 720px, calc(100vw - 64px)" className="aspect-video w-full object-cover" />
+              </div>
+              <p className="mt-6 flex flex-wrap items-baseline justify-between gap-2 text-xs uppercase tracking-[0.18em] text-white/65">
                 <span>{String(i + 1).padStart(2, '0')} · {k.tahun}</span>
                 <span>{k.peran}</span>
               </p>
